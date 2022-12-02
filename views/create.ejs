@@ -1,49 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+@import "bootstrap/functions";
+@import "bootstrap/variables";
+* {
+  box-sizing: border-box;
+}
 
+.row {
+  display: flex;
+}
+.column {
+  
+  padding: 10px;
+  height: 100vh;
+}
+.index{
+    position: absolute;
+    left: 9vw;
+    top: -19vh;
+    opacity: 0.8;
+    font-size:min(1.8vw,5.5vh);
+    color: #320113;
+}
+.indexUl{
+  list-style: none;
+  text-align: left;
+  position: relative;
+  top: 40vh;
+  padding:1vw;
+  overflow-y:hidden;
+}
+.indexUl li{
+  color: white;
+  padding:1.3vh;
+  margin-left:1vw;
+  font-size: min(1.5vw,5.2vh);
+  display: flex;
+  cursor: pointer;
+  height:7vh;
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 500;
+font-size: 1.7vw;
+line-height: 7vh;
+}
+.indexUl li:hover{
+  background-color: #27252C;
+  border-radius: 5px;
+  left:2vw;
+  width:13vw;
+}
+.indexUl li:active{
+  background: linear-gradient(to right, #FFAECC 0%, #FFAECC 3%, #27252C 3%, #27252C 100%);
+  border-radius: 5px;
+  left:2vw;
+  width:13vw;
+}
+.indexUl li:focus{
+  background: linear-gradient(to right, #FFAECC 0%, #FFAECC 3%, #27252C 3%, #27252C 100%);
+  border-radius: 5px;
+  left:2vw;
+  width:13vw;
+}
+.options{
+    background-color: #C2C2C2;
+}
+
+.options:active{
+    background-color: #CBFF96;
+}
+.options:focus{
+    background-color: #CBFF96;
+}
+  </style>
+</head>
 
 
   <%- include('./partials/head.ejs') %>
-
-
-<body style="background-color: rgb(175, 148, 148);">
-
-
   <%- include('./partials/nav.ejs') %>
 
-
-      <div class="container" >
-          <div class="jumbotron" style="background-color: rgba(0, 0, 0, 0.568); box-shadow: 25px 25px rgba(0, 0, 0, 0.295);">
-
-                       <h3 class = " text-center text-uppercase" style="color: rgb(255, 255, 255);">create content</h3>
-
-        <div class="row">
-            <div class=" col-md-7  mx-auto">
-
-
-                <form action='/create' method="POST">
-                    <div class="form-group">
-                      <label for="exampleFormControlTextarea" style="color: rgb(255, 255, 255); ">Blog Headline </label>
-                      <input name = "heading" placeholder="Enter head line" type="text" class="form-control" id="exampleFormControlTextarea" aria-describedby="emailHelp">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="exampleFormControlTextarea1"style="color: white;">Content</label>
-                        <textarea name = "body"placeholder="Enter content" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                      </div>
-
-                    <div class="form-group">
-                      <label for="exampleInputPassword1"style="color: white;">Author name</label>
-                      <input name = "author" placeholder="enter author name" type="text" class="form-control" id="exampleInputPassword1">
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                  </form>
-            </div>
-        </div>
-        
+<body>
+  <ion-input [autofocus]="inputTwoAutofocusEnabled" type="text"></ion-input>
+  <div class="row">
+    <div class="column" style="background-color:#320113; width:24.3%; min-height:1000vh;">
+      <div class="index">
+          <ul class="indexUl">
+              <li tabindex="1" autofocus style="border:hidden; outline: none;">Home</li>
+              <li tabindex="1">Tags</li>
+              <li tabindex="1">Users</li>
+              <li tabindex="1">Investors</li>
+          </ul>
       </div>
-    </section>
     </div>
+    <div class="column" style="background-color:#27252C; width:75.7%;">
+      <div class="container" >
+        <div class="jumbotron">
+
+                     <h3 class = " text-center" style="color: rgb(255, 255, 255);">Post your idea/startup</h3>
+
+      <div class="row">
+          <div class=" col-md-7  mx-auto">
+
+
+              <form action='/create' method="POST">
+                  <div class="form-group">
+                    <label for="exampleFormControlTextarea" style="color: rgb(255, 255, 255); ">Title:</label>
+                    <input name = "heading" placeholder="Enter head line" type="text" class="form-control" id="exampleFormControlTextarea" aria-describedby="emailHelp" style="background-color:#1B001C; outline: none;  border: hidden; height:7vh; line-height:7vh;">
+                  </div>
+
+                  <div class="form-group">
+                      <label for="exampleFormControlTextarea1"style="color: white;">Body:</label>
+                      <textarea name = "body"placeholder="Enter body here" class="form-control" id="exampleFormControlTextarea1" rows="3" style="background-color:#1B001C; outline: none;  border: hidden; "></textarea>
+                    </div>
+
+                  <div class="form-group">
+                    <label for="exampleInputPassword1"style="color: white;">Equity:</label>
+                    <input name = "author" placeholder="% of equity would like to sell" type="text" class="form-control" id="exampleInputPassword1" style="background-color:#1B001C; outline: none;  border: hidden; height:7vh; line-height:7vh;">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1"style="color: white;">Amount:</label>
+                    <input name = "author1" placeholder="Amount of money proposing" type="text" class="form-control" id="exampleInputPassword1" style="background-color:#1B001C; outline: none;  border: hidden; height:7vh; line-height:7vh;">
+                  </div>
+                  <br>
+                  <button type="submit" class="btn" style="background-color:#FFAEAE;">Preview</button>
+                  <button type="submit" class="btn" style="position:absolute; right:16.5vw; background-color:#FFAEAE;">Submit</button>
+                </form>
+          </div>
+      </div>
+      
+    </div>
+  </section>
+  </div>
+    </div>
+
+  
+
+
+     
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
